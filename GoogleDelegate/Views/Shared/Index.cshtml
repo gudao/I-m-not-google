@@ -1,0 +1,43 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>我不是Google</title>
+    <style type="text/css">
+        .main {margin:0 auto; width:720px;}
+        .logo { text-align:center; font-size:x-large; margin:50px 0;}
+        .search { padding-left:110px;}
+        .search .keyword { font-size: 14px;border-color: #9a9a9a #cdcdcd #cdcdcd #9a9a9a;border-image: none;border-style: solid;border-width: 1px;display: inline-block;height: 30px; line-height:30px; margin-right: 5px;vertical-align: top;width: 418px;}
+        .search .bt {cursor: pointer;height: 32px;width: 95px;}
+        .about { margin-top:50px; font-size:12px; text-align:center; line-height:20px; color:#9a9a9a;}
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="logo">我不是Google</div>
+        <div class="search">
+            <form action="/search" method="get">
+            <input type="text" name="q" class="keyword" />
+            <input type="hidden" name="newwindow" value="1" />
+            @*<input type="hidden" name="hl" value="zh-CN" />*@
+            <input type="submit" value="搜索" class="bt" />
+            </form>
+        </div>
+        <div class="about">
+            本站部署于香港的虚拟主机上，采用模拟GET请求www.google.com.hk并将结果原样输出。如果本站的做法不合适甚至触犯了法律，请及时提醒我们。
+            本站不以任何营利为目的，只为那些苦逼的程序员能快速的解决问题。因为我们的流量有限，如果您有闲置网络资源同时也想为该项目贡献力量请联系我们，源码下载<a href="https://github.com/gudao/I-m-not-google">https://github.com/gudao/I-m-not-google</a>。
+            我的联系方式？相信你能找的到。<!-- email:gudao1119(at)163.com author:gudao-->
+        </div>
+        
+    </div>
+    <span style="display:none">
+    <script type="text/javascript">
+        var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+        document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F404f9fa5187fd49f856eb91cf3d3ce9b' type='text/javascript'%3E%3C/script%3E"));
+     </script></span>
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+您 Web 项目的发布/打包进程将使用此文件。您可以通过编辑此 MSBuild 文件
+来自定义该进程的行为。若要了解与此相关的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=208121。
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <LastUsedBuildConfiguration>Release</LastUsedBuildConfiguration>
+    <LastUsedPlatform>Any CPU</LastUsedPlatform>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/GoogleDelegate.dll">
+      <publishTime>07/15/2014 08:42:13</publishTime>
+    </File>
+    <File Include="bin/Microsoft.Web.Infrastructure.dll">
+      <publishTime>07/14/2014 21:29:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Helpers.dll">
+      <publishTime>07/14/2014 21:29:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Mvc.dll">
+      <publishTime>07/14/2014 21:29:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.Providers.dll">
+      <publishTime>07/14/2014 21:29:27</publishTime>
+    </File>
+    <File Include="bin/System.Web.Razor.dll">
+      <publishTime>07/14/2014 21:29:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Deployment.dll">
+      <publishTime>07/14/2014 21:29:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.dll">
+      <publishTime>07/14/2014 21:29:26</publishTime>
+    </File>
+    <File Include="bin/System.Web.WebPages.Razor.dll">
+      <publishTime>07/14/2014 21:29:26</publishTime>
+    </File>
+    <File Include="bin/zh-Hans/System.Web.Providers.resources.dll">
+      <publishTime>07/14/2014 21:29:32</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>07/14/2014 21:29:20</publishTime>
+    </File>
+    <File Include="Views/Shared/Error.cshtml">
+      <publishTime>07/14/2014 23:30:37</publishTime>
+    </File>
+    <File Include="Views/Shared/Index.cshtml">
+      <publishTime>07/15/2014 08:41:31</publishTime>
+    </File>
+    <File Include="Views/Shared/Search.cshtml">
+      <publishTime>07/15/2014 08:42:03</publishTime>
+    </File>
+    <File Include="Views/Shared/_Layout.cshtml">
+      <publishTime>07/14/2014 21:29:20</publishTime>
+    </File>
+    <File Include="Views/Web.config">
+      <publishTime>07/14/2014 21:29:20</publishTime>
+    </File>
+    <File Include="Views/_ViewStart.cshtml">
+      <publishTime>07/14/2014 21:29:20</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/15/2014 08:47:33</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
