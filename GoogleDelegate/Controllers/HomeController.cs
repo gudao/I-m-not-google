@@ -4,6 +4,7 @@ using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -22,7 +23,10 @@ namespace GoogleDelegate.Controllers
         {
             List<string> removeParams = new List<string>();
             removeParams.Add("btnG");
-            ViewBag.HtmlContent = WebUtils.DoGet(GoogleHost + "/search?", Request.QueryString,removeParams);
+            string rep = WebUtils.DoGet(GoogleHost + "/search?", Request.QueryString, removeParams);
+            rep = ChineseConverter.ToSimplified(rep);
+            rep = rep.Replace("zh-HK", "zh-CN");
+            ViewBag.HtmlContent = rep;
             return View();
         }
 
@@ -36,7 +40,6 @@ namespace GoogleDelegate.Controllers
     }
     public class WebUtils
     {
-
         public static string DoGet(string url, NameValueCollection parameters,List<string> removeList)
         {
             if (parameters != null && parameters.Count > 0)
@@ -151,6 +154,49 @@ namespace GoogleDelegate.Controllers
                 }
             }
             return postData.ToString();
+        }
+    }
+    public static class ChineseConverter
+    {
+        internal const int LOCALE_SYSTEM_DEFAULT = 0x0800;
+        internal const int LCMAP_SIMPLIFIED_CHINESE = 0x02000000;
+        internal const int LCMAP_TRADITIONAL_CHINESE = 0x04000000;
+
+        /// <summary>
+        /// 使用OS的kernel.dll做为简繁转换工具，只要有裝OS就可以使用，不用需额外引用dll，但只能做逐字转换，无法进行词意的转换
+        /// <para>所以无法将电脑转成计算机</para>
+        /// </summary>
+        [DllImport("kernel32", CharSet = CharSet.Auto, SetLastError = true)]
+        internal static extern int LCMapString(int Locale, int dwMapFlags, string lpSrcStr, int cchSrc, [Out] string lpDestStr, int cchDest);
+
+        /// <summary>
+        /// 繁体转简体
+        /// </summary>
+        /// <param name="pSource">要转换的繁体字：體</param>
+        /// <returns>转换后的简体字：体</returns>
+        public static string ToSimplified(string pSource)
+        {
+            if (string.IsNullOrEmpty(pSource) || pSource.Length < 1)
+                return "";
+
+            String tTarget = new String(' ', pSource.Length);
+            int tReturn = LCMapString(LOCALE_SYSTEM_DEFAULT, LCMAP_SIMPLIFIED_CHINESE, pSource, pSource.Length, tTarget, pSource.Length);
+            return tTarget;
+        }
+
+        /// <summary>
+        /// 简体转繁体
+        /// </summary>
+        /// <param name="pSource">要转换的简体字：体</param>
+        /// <returns>转换后的繁体字：體</returns>
+        public static string ToTraditional(string pSource)
+        {
+            if (string.IsNullOrEmpty(pSource) || pSource.Length < 1)
+                return "";
+
+            String tTarget = new String(' ', pSource.Length);
+            int tReturn = LCMapString(LOCALE_SYSTEM_DEFAULT, LCMAP_TRADITIONAL_CHINESE, pSource, pSource.Length, tTarget, pSource.Length);
+            return tTarget;
         }
     }
 
